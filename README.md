@@ -20,7 +20,7 @@ To use this module, you can include it in your Terraform configuration. Here's a
 
 ```hcl
 module "lambda" {
-  source      = "git::https://github.com/opsstation/terraform-aws-lambda.git?ref=v1.0.0"
+  source      = "git::https://github.com/sohanyadav/terraform-aws-lambda.git?ref=v1.0.0"
   name        = local.name
   environment = local.environment
   filename    = "../../lambda_packages/index.zip" # -- The content of index.py should be present in zip format
@@ -34,7 +34,7 @@ module "lambda" {
 ## Example: basic-s3-function
 ```hcl
 module "lambda" {
-  source      = "git::https://github.com/opsstation/terraform-aws-lambda.git?ref=v1.0.0"
+  source      = "git::https://github.com/sohanyadav/terraform-aws-lambda.git?ref=v1.0.0"
   name        = local.name
   environment = local.environment
   s3_bucket   = "bucket-test"
@@ -49,7 +49,7 @@ module "lambda" {
 ## Example: complete-function
 ```hcl
 module "lambda" {
-  source                            = "git::https://github.com/opsstation/terraform-aws-lambda.git?ref=v1.0.0"
+  source                            = "git::https://github.com/sohanyadav/terraform-aws-lambda.git?ref=v1.0.0"
   name                              = local.name
   environment                       = local.environment
   create_layers                     = true
@@ -91,13 +91,13 @@ module "lambda" {
 ```
 
 ## Example
-For detailed examples on how to use this module, please refer to the '[example](https://github.com/opsstation/terraform-aws-lambda/tree/master/_example)' directory within this repository.
+For detailed examples on how to use this module, please refer to the '[example](https://github.com/sohanyadav/terraform-aws-lambda/tree/master/_example)' directory within this repository.
 
 ## Author
 Your Name Replace '[License Name]' and '[Your Name]' with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/opsstation/terraform-aws-lambda/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/sohanyadav/terraform-aws-lambda/blob/master/LICENSE) file for details.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -117,7 +117,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_labels"></a> [labels](#module\_labels) | git::https://github.com/opsstation/terraform-aws-labels.git | v1.0.0 |
+| <a name="module_labels"></a> [labels](#module\_labels) | git::https://github.com/sohanyadav/terraform-aws-labels.git | v1.0.0 |
 
 ## Resources
 
@@ -146,7 +146,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+|------|-------------|------|-----|:--------:|
 | <a name="input_actions"></a> [actions](#input\_actions) | The AWS Lambda action you want to allow in this statement. (e.g. lambda:InvokeFunction). | `list(any)` | `[]` | no |
 | <a name="input_architectures"></a> [architectures](#input\_architectures) | Instruction set architecture for your Lambda function. Valid values are ["x86\_64"] and ["arm64"]. | `list(string)` | `null` | no |
 | <a name="input_assume_role_policy"></a> [assume\_role\_policy](#input\_assume\_role\_policy) | assume role policy document in JSON format | `string` | `"{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"lambda.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n  ]\n}\n"` | no |
@@ -180,7 +180,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 | <a name="input_iam_role_arn"></a> [iam\_role\_arn](#input\_iam\_role\_arn) | Iam Role arn to be attached to lambda function. | `string` | `null` | no |
 | <a name="input_image_config_command"></a> [image\_config\_command](#input\_image\_config\_command) | The CMD for the docker image | `list(string)` | `[]` | no |
 | <a name="input_image_config_entry_point"></a> [image\_config\_entry\_point](#input\_image\_config\_entry\_point) | The ENTRYPOINT for the docker image | `list(string)` | `[]` | no |
-| <a name="input_image_config_working_directory"></a> [image\_config\_working\_directory](#input\_image\_config\_working\_directory) | The working directory for the docker image | `string` | `null` | no |
+| <a name="input_image_config_working_directory"></a> [image\_config\_working\_directory](#input\_image\_config\_working\_directory) | The working directory for the docker image | `string` | `null`| no |
 | <a name="input_image_uri"></a> [image\_uri](#input\_image\_uri) | The ECR image URI containing the function's deployment package. | `string` | `null` | no |
 | <a name="input_kms_key_deletion_window"></a> [kms\_key\_deletion\_window](#input\_kms\_key\_deletion\_window) | KMS Key deletion window in days. | `number` | `10` | no |
 | <a name="input_label_order"></a> [label\_order](#input\_label\_order) | Label order, e.g. `name`,`application`. | `list(any)` | <pre>[<br>  "name",<br>  "environment"<br>]</pre> | no |
@@ -188,17 +188,17 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 | <a name="input_layer_filenames"></a> [layer\_filenames](#input\_layer\_filenames) | The path to the function's deployment package within the local filesystem. If defined, The s3\_-prefixed options cannot be used. | `list(any)` | `[]` | no |
 | <a name="input_layers"></a> [layers](#input\_layers) | List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function. | `list(string)` | `null` | no |
 | <a name="input_license_infos"></a> [license\_infos](#input\_license\_infos) | License info for your Lambda Layer. See License Info. | `list(any)` | `[]` | no |
-| <a name="input_managedby"></a> [managedby](#input\_managedby) | ManagedBy, eg 'opsstation'. | `string` | `"opsstation"` | no |
+| <a name="input_managedby"></a> [managedby](#input\_managedby) | ManagedBy, eg 'sohanyadav'. | `string` | `"example"`| no |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | Amount of memory in MB your Lambda Function can use at runtime. Defaults to 128. | `number` | `128` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | <a name="input_names"></a> [names](#input\_names) | A unique name for your Lambda Layer. | `list(any)` | `[]` | no |
 | <a name="input_package_type"></a> [package\_type](#input\_package\_type) | The Lambda deployment package type. Valid options: Zip or Image | `string` | `"Zip"` | no |
 | <a name="input_policy_path"></a> [policy\_path](#input\_policy\_path) | Path of policies to that should be added to IAM role for Lambda Function | `string` | `null` | no |
 | <a name="input_principal_org_id"></a> [principal\_org\_id](#input\_principal\_org\_id) | The identifier for your organization in AWS Organizations. Use this to grant permissions to all the AWS accounts under this organization. | `string` | `null` | no |
-| <a name="input_principals"></a> [principals](#input\_principals) | The principal who is getting this permission. e.g. s3.amazonaws.com, an AWS account ID, or any valid AWS service principal such as events.amazonaws.com or sns.amazonaws.com. | `list(any)` | `[]` | no |
+| <a name="input_principals"></a> [principals](#input\_principals) | The principal who is getting this permission. e.g. s3.amazonaws.com, an AWS account ID, or any valid AWS service principal such as events.amazonaws.com or sns.amazonaws.com. | `list(any)` | `[]`| no |
 | <a name="input_publish"></a> [publish](#input\_publish) | Whether to publish creation/change as new Lambda Function Version. Defaults to false. | `bool` | `false` | no |
-| <a name="input_qualifiers"></a> [qualifiers](#input\_qualifiers) | Query parameter to specify function version or alias name. The permission will then apply to the specific qualified ARN. e.g. arn:aws:lambda:aws-region:acct-id:function:function-name:2 | `list(any)` | `[]` | no |
-| <a name="input_repository"></a> [repository](#input\_repository) | Terraform current module repo | `string` | `"https://github.com/opsstation/terraform-aws-lambda"` | no |
+| <a name="input_qualifiers"></a> [qualifiers](#input\_qualifiers) | Query parameter to specify function version or alias name. The permission will then apply to the specific qualified ARN. e.g. arn:aws:lambda:aws-region:acct-id:function:function-name:2 | `list(any)` | `[]`| no |
+| <a name="input_repository"></a> [repository](#input\_repository) | Terraform current module repo | `string` | `"https://github.com/sohanyadav/terraform-aws-lambda"` | no |
 | <a name="input_reserved_concurrent_executions"></a> [reserved\_concurrent\_executions](#input\_reserved\_concurrent\_executions) | The amount of reserved concurrent executions for this lambda function. A value of 0 disables lambda from being triggered and -1 removes any concurrency limitations. Defaults to Unreserved Concurrency Limits -1. | `number` | `10` | no |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | Runtimes. | `string` | `"python3.7"` | no |
 | <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | The S3 bucket location containing the function's deployment package. Conflicts with filename. This bucket must reside in the same AWS region where you are creating the Lambda function. | `string` | `null` | no |
